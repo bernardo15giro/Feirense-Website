@@ -6,8 +6,8 @@ body {
 }
 
 header {
-    position: static;
-    top: o;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -15,6 +15,8 @@ header {
     background-color: aqua;
     padding: 1rem;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    height: 20vh;
 }
 
 #Logo {
@@ -27,11 +29,11 @@ header {
     min-width: 90vh;
 }
 
-.menu>li {
+.menu>ul>li {
     list-style-type: none;
 }
 
-.menu>li>a {
+.menu>ul>li>a {
     text-decoration: none;
     color: white;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 5);
@@ -41,10 +43,10 @@ main {
     text-align: center;
     padding: 4rem;
     background-color: #d3eafa;
+    min-height: 80vh;
 }
 
 /* Cards */
-
 
 .card-container {
     display: flex;
@@ -98,4 +100,69 @@ main {
 .card:hover h3,
 .card:hover p {
     color: #0077cc;
+}
+
+/* Botão hamburger */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+/* Estilo do menu em telas grandes */
+.menu ul {
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    list-style: none;
+}
+
+/* Menu responsivo escondido por padrão */
+@media (max-width: 750px) {
+    .hamburger {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        height: 100%;
+        width: 250px;
+        background-color: #0077cc;
+        padding-top: 60px;
+        transition: left 0.3s ease;
+        z-index: 99;
+        min-width: 0;
+    }
+
+    .menu.open {
+        left: 0;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: start;
+        padding-left: 1rem;
+    }
+
+    .menu li {
+        margin: 1rem 0;
+    }
+
+    .menu>ul>li>a {
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    #Logo {
+        height: 10vh;
+    }
 }
